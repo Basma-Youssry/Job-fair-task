@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Transaction Data</title>
+</head>
+<body>
+    <h1>Customer Transaction Data</h1>
+    <input type="search" class="form-control my-4 mx-auto w-50" placeholder="search..." [(ngModel)] = "searchTerm"/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Transaction Amount</th>
+                <th>Transactions per day</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions | search:searchTerm" class="align-items-center">
+                <td >{{transaction.customerName}}</td>
+                <td>{{transaction.amount}}</td>
+                <!-- <td>{{ customerTransactionAmounts[transaction.customer_id] || 0 }}</td> -->
+                <td><button class="primary" (click)="selectCustomer(transaction.customer_id)">View</button></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div class=" my-4 ">
+        <app-transaction-chart *ngIf="selectedCustomerTransactions.length!=0"></app-transaction-chart>
+
+        <ng-template #viewCustomer>
+          <h3 class="text-center mt-3 text-primary-color">Please click on View to show transactions graph.</h3>
+        </ng-template>
+        
+    </div> -->
+</body>
+</html>
